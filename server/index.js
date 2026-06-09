@@ -17,8 +17,7 @@ const app = express();
 
 app.use(bodyParser.json());
 app.use(cors({
-    // origin: ["http://localhost:5174"],  // Adjust based on frontend URL
-    // credentials: true,  // Ensures cookies are sent
+  origin: 'https://www.lxpress-cargo.com'
 }));
 app.use(express.json());
 app.use(cookieParser());
