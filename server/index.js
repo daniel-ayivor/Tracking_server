@@ -16,11 +16,15 @@ config();
 const app = express();
 
 app.use(bodyParser.json());
-app.use(cors({
-  origin: 'https://www.lxpress-cargo.com'
-}));
 app.use(express.json());
 app.use(cookieParser());
+// Replace your existing app.use(cors(...)) with this:
+app.use(cors({
+  origin: ['https://www.lxpress-cargo.com'], // Ensure this matches your frontend URL exactly
+  credentials: true, // Required if you are sending cookies/auth headers
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization']
+}));
 
 // Routes
 app.use('/auth', authRoute);
